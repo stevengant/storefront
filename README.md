@@ -2,7 +2,7 @@
 
 ## Project: Application State with Redux
 
-### Author: Student/Group Name
+### Author: Steve Gant
 
 ### Problem Domain  
 
