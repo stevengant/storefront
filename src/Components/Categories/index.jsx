@@ -15,7 +15,7 @@ const Categories = ({ setCategory, filterProducts, categories, reset, activeCate
         }}
       >Browse our Categories</Typography>
 
-      <ButtonGroup variant="text" aria-label="text button group">
+      <ButtonGroup variant="text" aria-label="category button group">
         {
           categories.map((category, idx) => {
             return (

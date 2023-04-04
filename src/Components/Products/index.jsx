@@ -1,21 +1,24 @@
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
 import { connect } from "react-redux";
 
-const Products = ({ products }) => {
+const Products = ({ products, activeCategory }) => {
   return (
     <>
-      <Typography
+      {
+        activeCategory && 
+        <Typography
         variant="h2"
         align="center"
         sx={{
           color: "black",
 
         }}
-      >PRODUCTS</Typography>
+      >{activeCategory}</Typography>
+      }
       <Box sx={{ width: '100%' }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {
-            products.map((product, idx) => {
+            activeCategory && products.map((product, idx) => {
               return (
                 <Grid item xs={2} sm={4} md={4} key={`product-${idx}`}>
 

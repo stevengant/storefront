@@ -18,7 +18,7 @@ const Header = () => {
           variant="h4"
           sx={{
             color: "black",
-
+        
           }}
           >OUR STORE</Typography>
         </Toolbar>
