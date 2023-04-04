@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# LAB - Class 36
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project: Application State with Redux
 
-## Available Scripts
+### Author: Steve Gant
 
-In the project directory, you can run:
+### Problem Domain  
 
-### `npm start`
+- Functionality
+  - As a user, I expect to see a list of available product categories in the store so that I can easily browse products.
+  - As a user, I want to choose a category and see a list of all available products matching that category.
+  - As a user, I want a clean, easy to use user interface so that I can shop the online store with confidence
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Links and Resources
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [GitHub Branch](https://github.com/stevengant/storefront/tree/lab36) 
 
-### `npm test`
+- [CodeSandbox - branch Lab36](https://codesandbox.io/p/github/stevengant/storefront/lab36?file=README.md&workspace=%257B%2522activeFilepath%2522%253Anull%252C%2522openFiles%2522%253A%255B%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522spaces%2522%253A%257B%2522clg1qv43a00eu356lzjm6iur3%2522%253A%257B%2522key%2522%253A%2522clg1qv43a00eu356lzjm6iur3%2522%252C%2522name%2522%253A%2522Default%2522%252C%2522devtools%2522%253A%255B%257B%2522type%2522%253A%2522PREVIEW%2522%252C%2522taskId%2522%253A%2522start%2522%252C%2522port%2522%253A3000%252C%2522key%2522%253A%2522clg1qv43a00ev356la3ghu2ky%2522%252C%2522isMinimized%2522%253Afalse%257D%255D%257D%257D%252C%2522currentSpace%2522%253A%2522clg1qv43a00eu356lzjm6iur3%2522%252C%2522spacesOrder%2522%253A%255B%2522clg1qv43a00eu356lzjm6iur3%2522%255D%252C%2522hideCodeEditor%2522%253Afalse%257D)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Collaborators
 
-### `npm run build`
+### Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `npm install`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### How to initialize/run your application (where applicable)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `npm start`
 
-### `npm run eject`
+#### How to use your library (where applicable)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Features / Routes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Display a list of our product categories
+- Display a listing of products for each category, when the category is selected
+- From the product listings:
+  - Click to view a full detail page about the product
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Tests
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+categories.test.js
+  - Initializes initialState
+  - Selects category and updates activgeCategory
+  - Filters products by category
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### UML
