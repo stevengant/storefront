@@ -38,7 +38,7 @@
 
 #### Tests
 
-- categories.test.js
+categories.test.js
   - Initializes initialState
   - Selects category and updates activgeCategory
   - Filters products by category
