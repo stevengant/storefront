@@ -8,17 +8,28 @@ const initialState = [
   { name: 'Bread', category: 'FOOD', price: 2.39, inStock: 90 },
 ];
 
+const tempState = [...initialState];
+
 const productsReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'SET':
-      return initialState.filter(e => e.category === action.payload.name)
+      return initialState.filter(product => product.category === action.payload.name)
+
+    case 'ADD':
+      let activeCategory = action.payload.category;
+
+      tempState = tempState.map(product => product.name === action.payload.name ? {...product, inStock: product.inStock - 1} : product);
+      
+      let results = tempState.filter(product => product.category === activeCategory);
+
+      return results;
 
     case 'RESET':
       return initialState;
 
-    default: 
+    default:
       return state;
   }
-}
+};
 
 export default productsReducer;

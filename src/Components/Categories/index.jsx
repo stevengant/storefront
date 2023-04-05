@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory, reset } from "../../store/actions";
+import { setCategory } from "../../store/actions";
 import { Button, ButtonGroup, Container, Typography } from "@mui/material";
 import SimpleCart from "../SimpleCart";
 
@@ -33,12 +33,12 @@ const Categories = () => {
             )
           })
         }
-        <Button
+        {/* <Button
           onClick={() => reset()}
         >RESET
-        </Button>
+        </Button> */}
       </ButtonGroup>
-      
+
       <Container>
         <SimpleCart />
       </Container>

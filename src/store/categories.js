@@ -12,15 +12,9 @@ const categoriesReducer = (state = initialState, action) => {
     case 'SET':
       return {
         ...state,
-        activeCategory: action.payload.name,
-        products: initialState.products,
-      };
+        activeCategory: action.payload,
 
-      case 'FILTER_PRODUCTS':
-        return {
-          ...state,
-        products: state.products.filter((item) => item.category === state.activeCategory),
-        };
+      };
 
     case 'RESET':
       return initialState;

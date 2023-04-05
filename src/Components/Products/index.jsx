@@ -1,9 +1,10 @@
-import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from '../../store/actions';
 
 const Products = () => {
-  const { products } = useSelector(state => state);
+  const { categories, products } = useSelector(state => state);
+  const { activeCategory } = categories;
   const dispatch = useDispatch();
 
   return (
@@ -20,7 +21,7 @@ const Products = () => {
       <Box sx={{ width: '100%' }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {
-            products.map((product, idx) => {
+            activeCategory && products.map((product, idx) => {
               return (
                 <Grid item xs={2} sm={4} md={4} key={`product-${idx}`}>
 
@@ -30,6 +31,13 @@ const Products = () => {
                       margin: "1rem",
                     }}
                   >
+                    <CardMedia
+                    component="img"
+                    image={`https://source.unsplash.com/random?${product.name}`}
+                    title={product.name}
+                    />
+
+          
                     <CardContent>
                       <Typography>Name: {product.name}</Typography>
                       <Typography>Price: {product.price}</Typography>
@@ -37,7 +45,7 @@ const Products = () => {
                     </CardContent>
                     <CardActions>
                       <Button onClick={() => dispatch(addToCart(product))} size="small">Add to Cart</Button>
-                      <Button size="small">Learn More</Button>
+
                     </CardActions>
                   </Card>
 
