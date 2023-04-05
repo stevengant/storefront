@@ -16,7 +16,8 @@ const productsReducer = (state = initialState, action) => {
     case 'RESET':
       return initialState;
 
-    default: return state;
+    default: 
+      return state;
   }
 }
 
