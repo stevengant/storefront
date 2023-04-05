@@ -1,7 +1,11 @@
-import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
-import { connect } from "react-redux";
+import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../store/actions";
 
-const Products = ({ products, activeCategory }) => {
+const Products = (activeCategory) => {
+  const { products } = useSelector(state => state);
+  const dispatch = useDispatch();
+
   return (
     <>
       {
@@ -29,10 +33,14 @@ const Products = ({ products, activeCategory }) => {
                     }}
                   >
                     <CardContent>
-                      <Typography>Name: {product.name}</Typography>
+                      {/* <Typography>Name: {product.name}</Typography> */}
                       <Typography>Price: {product.price}</Typography>
                       <Typography>In-Stock: {product.inStock}</Typography>
                     </CardContent>
+                    <CardActions>
+                      <Button  onClick={() => dispatch(addToCart(product))} size="small">Add to Cart</Button>
+                      <Button size="small">Learn More</Button>
+                    </CardActions>
                   </Card>
 
                 </Grid>
@@ -45,14 +53,14 @@ const Products = ({ products, activeCategory }) => {
   )
 }
 
-const mapStateToProps = ({ categories }) => {
-  return {
-    categories: categories.categories,
-    activeCategory: categories.activeCategory,
-    products: categories.products,
-  };
-}
+// const mapStateToProps = ({ categories }) => {
+//   return {
+//     categories: categories.categories,
+//     activeCategory: categories.activeCategory,
+//     products: categories.products,
+//   };
+// }
 
-const mapDispatchToProps = {};
+// const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default Products;

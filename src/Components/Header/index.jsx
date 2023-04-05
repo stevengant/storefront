@@ -1,7 +1,9 @@
-import { AppBar, Container, Toolbar, Typography } from "@mui/material";
-
+import { AppBar, Button, Container, Toolbar, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const { cart } = useSelector(state => state);
+
   return (
     <AppBar
       position="static"
@@ -21,6 +23,7 @@ const Header = () => {
         
           }}
           >OUR STORE</Typography>
+          <Button>Cart ({cart.length})</Button>
         </Toolbar>
       </Container>
     </AppBar>

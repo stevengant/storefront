@@ -1,9 +1,12 @@
-import { connect } from "react-redux";
-import { setCategory, filterProducts, reset } from "../../store/categories";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory, reset } from "../../store/actions";
 import { Button, ButtonGroup, Typography } from "@mui/material";
+import SimpleCart from "../SimpleCart";
 
+const Categories = () => {
+  const { categories } = useSelector(state => state);
+  const dispatch = useDispatch();
 
-const Categories = ({ setCategory, filterProducts, categories, reset, activeCategory, products }) => {
   return (
     <>
       <Typography
@@ -17,13 +20,12 @@ const Categories = ({ setCategory, filterProducts, categories, reset, activeCate
 
       <ButtonGroup variant="text" aria-label="category button group">
         {
-          categories.map((category, idx) => {
+          categories.categories.map((category, idx) => {
             return (
               <Button
                 key={`category-${idx}`}
                 onClick={() => {
-                  setCategory(category);
-                  filterProducts();
+                  dispatch(setCategory(category));
                 }}
               >
                 {category.displayName}
@@ -36,18 +38,20 @@ const Categories = ({ setCategory, filterProducts, categories, reset, activeCate
         >RESET
         </Button>
       </ButtonGroup>
+
+      <SimpleCart />
     </>
   )
 };
 
-const mapStateToProps = ({ categories }) => {
-  return {
-    categories: categories.categories,
-    activeCategory: categories.activeCategory,
-    products: categories.products,
-  };
-}
+// const mapStateToProps = ({ categories }) => {
+//   return {
+//     categories: categories.categories,
+//     activeCategory: categories.activeCategory,
+//     products: categories.products,
+//   };
+// }
 
-const mapDispatchToProps = { setCategory, filterProducts, reset };
+// const mapDispatchToProps = { setCategory, filterProducts, reset };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+export default Categories;
