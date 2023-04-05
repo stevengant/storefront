@@ -14,7 +14,10 @@ const Header = () => {
       <Container>
         <Toolbar
           disableGutters
-
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
         >
           <Typography 
           variant="h4"
@@ -23,7 +26,7 @@ const Header = () => {
         
           }}
           >OUR STORE</Typography>
-          <Button>Cart ({cart.length})</Button>
+          <Button >Cart ({cart.length})</Button>
         </Toolbar>
       </Container>
     </AppBar>
