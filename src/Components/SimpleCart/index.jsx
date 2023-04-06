@@ -10,38 +10,28 @@ const SimpleCart = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          maxWidth: "md",
+      {
+        cart.map((item, idx) => {
+          return (
+            <Box
+              key={`cart-${idx}`}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: "100px",
+              }}
+            >
+              <Typography>{item.name}</Typography>
+              <IconButton>
+                <DeleteIcon fontSize="small" onClick={() => dispatch(removeFromCart(item))} />
+              </IconButton>
+            </Box>
+          )
+        })
+      }
 
-        }}
-      >
-        {
-          cart.map((item, idx) => {
-            return (
-              <Box
-                key={`cart-${idx}`}
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  width: "100px",
-                }}
-              >
-                <Typography>{item.name}</Typography>
-                <IconButton>
-                  <DeleteIcon fontSize="small" onClick={() => dispatch(removeFromCart(item))} />
-                </IconButton>
-              </Box>
-            )
-          })
-        }
-      </Box>
     </>
   );
 };

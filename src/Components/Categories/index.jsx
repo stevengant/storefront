@@ -1,11 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../../store/actions";
-import { Button, ButtonGroup, Container, Typography } from "@mui/material";
+import { Button, ButtonGroup, Typography, Container } from "@mui/material";
+import { useEffect } from "react";
+import { get, select } from "../../store/actions";
 import SimpleCart from "../SimpleCart";
 
 const Categories = () => {
-  const { categories } = useSelector(state => state);
+  const { categories } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(get('categories'))
+    dispatch(get('products'))
+
+  }, []);
 
   return (
     <>
@@ -20,26 +27,19 @@ const Categories = () => {
 
       <ButtonGroup variant="text" aria-label="category button group">
         {
-          categories.categories.map((category, idx) => {
-            return (
-              <Button
-                key={`category-${idx}`}
-                onClick={() => {
-                  dispatch(setCategory(category));
-                }}
-              >
-                {category.displayName}
-              </Button>
-            )
-          })
+          categories.map((category, idx) => (
+            <Button
+              key={`categories-${idx}`}
+              onClick={() => dispatch(select(category))}
+            >
+              {category.name}
+            </Button>
+          ))
         }
-
       </ButtonGroup>
-
       <Container align="right">
         <SimpleCart />
       </Container>
-
     </>
   )
 };
