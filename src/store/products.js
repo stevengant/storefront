@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const initialState = [
   { name: 'TV', category: 'ELECTRONICS', price: 699.00, inStock: 5 },
   { name: 'Radio', category: 'ELECTRONICS', price: 99.00, inStock: 15 },
@@ -18,15 +20,15 @@ const productsReducer = (state = initialState, action) => {
 
     case 'ADD':
       let activeCategory = payload.category;
-      console.warn(activeCategory)
 
-      tempState = tempState.map(product => product.name === payload.name ? {...product, inStock: product.inStock - 1} : product)
+      tempState = tempState.map(product => product.name === payload.name ? { ...product, inStock: product.inStock - 1 } : product)
 
       let results = tempState.filter(product => product.category === activeCategory);
-      console.log('is inventory correct for all categories?', tempState);
-      console.log(results);
 
-      return results;
+        return results;
+
+    case 'GET':
+      return payload;
 
     case 'RESET':
       return initialState;
@@ -35,5 +37,18 @@ const productsReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const setProducts = (data) => {
+  return {
+    type: 'GET',
+    payload: data,
+  }
+}
+
+export const getProducts = () => async (dispatch, getState) => {
+  let response = await axios.get('https://api-js401.herokuapp.com/api/v1/todo');
+  console.log('request results', response.data.results);
+  dispatch(setProducts(response.data.results));
+}
 
 export default productsReducer;

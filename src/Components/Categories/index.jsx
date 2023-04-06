@@ -33,13 +33,10 @@ const Categories = () => {
             )
           })
         }
-        {/* <Button
-          onClick={() => reset()}
-        >RESET
-        </Button> */}
+
       </ButtonGroup>
 
-      <Container>
+      <Container align="right">
         <SimpleCart />
       </Container>
 
