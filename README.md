@@ -62,3 +62,4 @@ categories.test.js
   - Filters products by category
 
 #### UML
+![Lab38 UML](assets/Lab38UML.png)
