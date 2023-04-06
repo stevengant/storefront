@@ -1,6 +1,6 @@
 import { legacy_createStore as createStore, combineReducers } from 'redux';
 import categoriesReducer from './categories';
-import { setCategory, filterProduct } from './categories';
+import { select, filterProduct } from './categories';
 
 describe('Categories Reducer', () => {
   const reducers = combineReducers({
@@ -30,7 +30,7 @@ describe('Categories Reducer', () => {
 
     let { categories } = state.categories;
 
-    store.dispatch(setCategory(categories[1]));
+    store.dispatch(select(categories[1]));
     let newState = store.getState();
 
     expect(newState.categories.activeCategory).toEqual('food')
@@ -41,7 +41,7 @@ describe('Categories Reducer', () => {
 
     let { categories } = state.categories;
 
-    store.dispatch(setCategory(categories[1]));
+    store.dispatch(select(categories[1]));
     store.dispatch(filterProduct(categories[1]));
     let newState = store.getState();
 
