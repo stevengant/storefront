@@ -19,6 +19,10 @@
   - As a user, I want to be able to remove an item from my shopping cart.
 
 *Phase Three - Redux - Asynchronous Actions*
+- In phase 3, we will be connecting our Virtual Store to a live API so that our data is persistent and able to be separately managed.
+
+  - As a user, I want to interact with live inventory so that I have confidence that the displayed products are in stock.
+  - As a user, I want to know to that when I add an item to my cart, that it is removed from inventory so that no other users can purchase it.
 
 ### Links and Resources
 
