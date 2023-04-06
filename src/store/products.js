@@ -8,19 +8,23 @@ const initialState = [
   { name: 'Bread', category: 'FOOD', price: 2.39, inStock: 90 },
 ];
 
-const tempState = [...initialState];
+let tempState = [...initialState];
 
 const productsReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case 'SET':
-      return initialState.filter(product => product.category === action.payload.name)
+      return initialState.filter(product => product.category === payload.name)
 
     case 'ADD':
-      let activeCategory = action.payload.category;
+      let activeCategory = payload.category;
+      console.warn(activeCategory)
 
-      tempState = tempState.map(product => product.name === action.payload.name ? {...product, inStock: product.inStock - 1} : product);
-      
+      tempState = tempState.map(product => product.name === payload.name ? {...product, inStock: product.inStock - 1} : product)
+
       let results = tempState.filter(product => product.category === activeCategory);
+      console.log('is inventory correct for all categories?', tempState);
+      console.log(results);
 
       return results;
 
