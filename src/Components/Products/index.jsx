@@ -1,72 +1,73 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from '../../store/actions';
 
 const Products = () => {
-  const { categories, products } = useSelector(state => state);
-  const { activeCategory } = categories;
+  const { products } = useSelector(state => state);
+  const { activeCategory } = useSelector(state => state.categories);
   const dispatch = useDispatch();
 
   return (
     <>
-      <Typography
-        variant="h2"
+      {
+        activeCategory && 
+        <Typography
+        variant="h4"
         align="center"
-        sx={{
-          color: "black",
+        >
+          {activeCategory.displayName.toUpperCase()}
+          </Typography>
+      }
+      {
+        activeCategory && <p>{activeCategory.description}</p>
+      }
 
-        }}
-      ></Typography>
-
-      <Box sx={{ width: '100%' }}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          {
-            activeCategory && products.map((product, idx) => {
-              return (
-                <Grid item xs={2} sm={4} md={4} key={`product-${idx}`}>
-
-                  <Card
-                    variant="outlined"
-                    sx={{
-                      margin: "1rem",
-                    }}
+      {activeCategory && <Container maxWidth="md">
+        <Grid container spacing={4}>
+          {products.map((product) => (
+            <Grid 
+            item key={product.name} 
+            xs={12} 
+            sm={6} 
+            md={4}
+            m="auto"
+            
+            >
+              <Card >
+                <CardMedia
+                  component="img"
+                  image={`https://source.unsplash.com/random?${product.name}`}
+                  title={product.name}
+                />
+                <CardContent >
+                  <Typography 
+                  gutterBottom 
+                  variant="h5" 
+                  component="h2"
+                  align="left"
                   >
-                    <CardMedia
-                    component="img"
-                    image={`https://source.unsplash.com/random?${product.name}`}
-                    title={product.name}
-                    />
-
-          
-                    <CardContent>
-                      <Typography>Name: {product.name}</Typography>
-                      <Typography>Price: {product.price}</Typography>
-                      <Typography>In-Stock: {product.inStock}</Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button onClick={() => dispatch(addToCart(product))} size="small">Add to Cart</Button>
-
-                    </CardActions>
-                  </Card>
-
-                </Grid>
-              )
-            })
-          }
+                    {product.name.toUpperCase()}
+                  </Typography>
+                  <Typography>
+                    {product.description}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    onClick={() => dispatch(addToCart(product))}
+                  >
+                    Add to Cart
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
-      </Box>
+      </Container>}
     </>
   )
-}
 
-// const mapStateToProps = ({ categories }) => {
-//   return {
-//     categories: categories.categories,
-//     activeCategory: categories.activeCategory,
-//     products: categories.products,
-//   };
-// }
-
-// const mapDispatchToProps = {};
+};
 
 export default Products;
